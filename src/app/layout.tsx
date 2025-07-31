@@ -1,6 +1,6 @@
 import { NAV_LINKS } from "@/lib/constants";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ThemeProvider } from "next-themes";
@@ -12,15 +12,9 @@ import { Button } from "@/components/ui/button";
 import AdminLoginDialog from "@/components/admin-login-dialog";
 import { useState } from "react";
 import AdminPanelPlaceholder from "@/components/admin-panel-placeholder";
-import Image from "next/image";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -42,7 +36,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={geistSans.className} suppressHydrationWarning>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
