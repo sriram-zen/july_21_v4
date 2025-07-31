@@ -8,6 +8,10 @@ import Link from "next/link";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { EnvVarWarning } from "@/components/env-var-warning";
 import AuthButton from "@/components/header-auth";
+import { Button } from "@/components/ui/button";
+import AdminLoginDialog from "@/components/admin-login-dialog";
+import { useState } from "react";
+import AdminPanelPlaceholder from "@/components/admin-panel-placeholder";
 import Image from "next/image";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +33,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
+  const handleAdminLoginSuccess = () => {
+    setIsAdminLoggedIn(true);
+    setShowAdminLogin(false);
+  };
+
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
@@ -49,9 +61,19 @@ export default function RootLayout({
                       </Link>
                     ))}
                   </div>
-                  {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
+                  <div className="flex gap-5 items-center">
+                    <Button variant="ghost">Donation</Button>
+                    <Button variant="ghost" onClick={() => setShowAdminLogin(true)}>Admin</Button>
+                    {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
+                  </div>
                 </div>
               </nav>
+              <AdminLoginDialog
+                isOpen={showAdminLogin}
+                onClose={() => setShowAdminLogin(false)}
+                onLoginSuccess={handleAdminLoginSuccess}
+              />
+              {isAdminLoggedIn && <AdminPanelPlaceholder />}
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
               </div>

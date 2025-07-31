@@ -3,28 +3,20 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        {/* Need to remove this section once application generation Begins  ----START SECTION----*/}
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by prompting{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              Alchemi will help to build your app
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Scope the features, Brainstorm the implementation plan, Generate the code and Deploy it.
-          </li>
-          <li className="tracking-[-.01em]">
-            Alchemi uses supabase as a backend. Vercel for deployment.
-          </li>
-        </ol>
-        {/* Need to remove this section once application generation Begins  ----START SECTION----*/}  
-        
-      </main>
-      
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-theme(spacing.16))] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto text-center">
+        <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
+          Welcome to the Spiritual Events Platform
+        </h1>
+        <p className="mt-3 text-xl text-white-300">
+          Connecting devotees through events and seamless donations.
+        </p>
+        <div className="mt-8 flex justify-center">
+          <Button className="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-medium">
+            Learn More
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
